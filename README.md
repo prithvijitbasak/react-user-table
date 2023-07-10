@@ -6,12 +6,18 @@ Live link --> https://prithvijitbasak.github.io/react-user-table/
 
 ## Installation Guides
 
-Clone and run the project using the below script in terminal step by step :-
+Clone and run the project using the below scripts in terminal step by step :-
 
 ```
 md user-info-table
+```
+```
 cd user-info-table
+```
+```
 git clone https://github.com/prithvijitbasak/react-user-table.git
+```
+```
 npm start
 ```
 
