@@ -4,16 +4,18 @@ import AddingConfirmationBox from "./components/AddingConfirmationBox";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import DeletionConfirmationBox from "./components/DeletionConfirmationBox";
 import UpdationConfirmationBox from "./components/UpdationConfirmationBox";
+import userData from "./userData.json";
 
 // to get the items stored in the local storage for every rendering
 const getUsers = () => {
-  const row = localStorage.getItem("row");
-  if (row) {
-    return JSON.parse(row);
-  } else {
-    return [];
-  }
+  return userData;
 };
+
+const saveUsersToJSON = () => {
+  userData.length = 0;
+  
+}
+
 
 const App = () => {
   // setting up all the state variables
