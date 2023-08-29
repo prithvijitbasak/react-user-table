@@ -5,7 +5,7 @@ This project was bootstrapped with React.js and Tailwind CSS. This project is a 
 
 ***It is same as the project of main branch just it uses a json file to store and fetch the data of users.***
 
-***Currently working on project.***
+***Currently working on this project.***
 
 Live link --> https://prithvijitbasak.github.io/react-user-table/
 
