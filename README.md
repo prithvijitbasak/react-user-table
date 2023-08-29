@@ -3,7 +3,7 @@
 
 This project was bootstrapped with React.js and Tailwind CSS. This project is a web application which contains a dynamic table that is both editable and deletable. The main feature is even after the browser's tab gets closed it preserves the data and renders the information as it was.
 
-***It is same as the project of main branch just it uses a json file to store and fetch the data f users.***
+***It is same as the project of main branch just it uses a json file to store and fetch the data of users.***
 
 ***Currently working on project.***
 
