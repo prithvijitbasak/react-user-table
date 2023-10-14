@@ -30,4 +30,4 @@ npm run deploy
 
 ## Tech stacks used
 
-React.js and Tailwind CSS
+React.js and Tailwind Css
