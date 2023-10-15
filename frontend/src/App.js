@@ -4,18 +4,44 @@ import AddingConfirmationBox from "./components/AddingConfirmationBox";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import DeletionConfirmationBox from "./components/DeletionConfirmationBox";
 import UpdationConfirmationBox from "./components/UpdationConfirmationBox";
-import userData from "./userData.json";
-
+import userData from "./data.json";
+const fs = require("file-system");
+const path = require("path");
+// import fs from 'file-system';
+// import path from 'path';
 // to get the items stored in the local storage for every rendering
 const getUsers = () => {
   return userData;
 };
 
-const saveUsersToJSON = () => {
-  userData.length = 0;
-  
-}
+const saveUsersToJSON = (newData) => {
+  const fileName = "data.json";
+  fs.readFile(fileName, "utf-8", (err, data) => {
+    if (err) {
+      console.error("Error reading this file: ", err);
+      return;
+    }
 
+    let existingData = [];
+    if (data) {
+      try {
+        existingData = JSON.parse(data);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    }
+
+    const updatedData = [...existingData, newData];
+
+    fs.writeFile(fileName, JSON.stringify(updatedData), 'utf-8', (err) => {
+      if(err) {
+        console.error('Error writing to the file: ', err);
+        return;
+      }
+      console.log('Data added to the file successfully');
+    });
+  });
+};
 
 const App = () => {
   // setting up all the state variables
@@ -49,23 +75,52 @@ const App = () => {
 
   // this function handles the functionality whenever a "Add User" button is clicked.
   const handleAddUserClick = () => {
-
-    // this below line have a crucial purpose whenver the add user button
+    // this below line have a crucial purpose whenever the add user button
     // is hit it will nullify the selected element so no any value
     // will appear in the form. Such as when building this we were facing
     // a problem such as whenever the user is hitting the edit button
     // and then without editing anything he was hitting the X button
     // the values were still appearing in the form when "Add User" button was
     // hit. This was happening because of the selectedUser state variable
-    // that was non null so even after hitting the "Add User" button the 
+    // that was non null so even after hitting the "Add User" button the
     // non-null value was showing the value that was previously selected.
     setSelectedUser(null);
     toggleVisibility();
   };
 
+  // to check whether the data.json file exists or not
+  //In this version of the fileExists function, the path.join method is used to construct the file path by joining the current working directory path with the provided file name. The fs.accessSync method checks whether the file exists at the specified path, and the function returns true if the file exists and false if it does not. Make sure to handle errors appropriately.
+  const fileExists = (fileName) => {
+    const filePath = path.join(process.cwd(), fileName);
+    try {
+      fs.accessSync(filePath, fs.constants.F_OK);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  };
+
+  // file creation
+  const createNewFile = (filePath, data) => {
+    const fullPath = path.resolve(filePath);
+
+    fs.writeFile(fullPath, JSON.stringify(data), (err) => {
+      if (err) throw err;
+      console.log("File created successfully");
+    });
+  };
+
   // this function adds a new item to the table and updates the data into localStorage
   const addUser = (userData) => {
-    setUsers([...users, userData]);
+    const fileName = "data.json";
+    const fileAlreadyExists = fileExists(fileName);
+
+    if (!fileAlreadyExists) {
+      createNewFile(fileName, [userData]);
+    } else {
+      setUsers([...users, userData]);
+      saveUsersToJSON([...users, userData]);
+    }
     toggleVisibility();
     setAddingComponentVisibility(true);
     setTimeout(() => {
