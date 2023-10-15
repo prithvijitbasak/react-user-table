@@ -1,0 +1,15 @@
+{
+  "name": "react-user-information-table",
+  "version": "1.0.0",
+  "description": "Making the user info table using node.js and react.js with backend and frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prithvijit Basak",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
