@@ -10,7 +10,7 @@ https://prithvijitbasak.github.io/react-user-table/
 Clone and run the project using the below scripts in terminal step by step :-
 
 ```
-md react-user-table
+md react-user-table 
 ```
 ```
 cd react-user-table
