@@ -19,13 +19,13 @@ cd react-user-table
 git clone https://github.com/prithvijitbasak/react-user-table.git
 ```
 ```
-npm start
+npm run dev
 ```
 
-I have changed the build script so to build the project do this :- 
+To build the project run the below command :- 
 
 ```
-npm run deploy
+npm run build
 ```
 
 ## Tech stacks used
