@@ -3,7 +3,7 @@
 This project is bootstrapped with React.js and Tailwind CSS. This project is a web application which contains a dynamic table that is both editable and deletable. The main feature is, even after the browser's tab gets closed it preserves the data and renders the information as it was.
 
 ### __Live Link__
-https://prithvijitbasak.github.io/react-user-table/
+https://pb-react-user-table.netlify.app/
 
 ## Installation Guides
 
